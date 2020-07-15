@@ -1,4 +1,12 @@
-﻿# RC_RX_CABELL_V3_FHSS
+﻿# This is a modified FORK compile with AVR GCC. #
+## In construction .... ##
+
+**Many thanks to the author.**
+
+----------
+***Original readme :***
+
+# RC_RX_CABELL_V3_FHSS
 ## Background
 RC_RX_CABELL_V3_FHSS is an open source receiver for remote controlled vehicles.  Developed by Dennis Cabell (KE8FZX)
 The hardware for this receiver is an Arduino Pro Mini (using a 5V ATMEGA328P at 16 Mhz) and one or two NRF24L01+ modules.  Both are inexpensively available on-line.  Be sure to get the version of a Pro Mini that has pins A4, A5, A6 and A7 broken out.
