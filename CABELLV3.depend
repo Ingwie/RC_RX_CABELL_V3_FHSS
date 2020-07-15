@@ -1,0 +1,93 @@
+# depslib dependency file v1.0
+1592513218 source:a:\cabell\nrf24l01.cpp
+	"RX.h"
+	"spi.h"
+	"Pins.h"
+	"iface_nrf24l01.h"
+
+1592246778 a:\cabell\rx.h
+	<inttypes.h>
+	<string.h>
+	<stddef.h>
+	<stdlib.h>
+	<avr/io.h>
+	<avr/cpufunc.h>
+	<avr/interrupt.h>
+	<avr/pgmspace.h>
+	<avr/eeprom.h>
+	<util/delay.h>
+	"spi.h"
+	"Time.h"
+
+1591218374 a:\cabell\spi.h
+	"RX.h"
+
+1590851296 a:\cabell\utils.h
+	"RX.h"
+
+1591278494 a:\cabell\pins.h
+	"pin_helper.h"
+	"RX.h"
+
+1590925158 a:\cabell\pin_helper.h
+
+1592505600 a:\cabell\iface_nrf24l01.h
+	"RX.h"
+
+1592001836 source:a:\cabell\ppm.cpp
+	"PPM.h"
+
+1590825668 a:\cabell\ppm.h
+	"Pins.h"
+
+1590964306 a:\cabell\time.h
+	"RX.h"
+
+1592034374 source:a:\cabell\rc_rx_cabell_v3_fhss.cpp
+	"RX.h"
+	"Pins.h"
+	"PPM.h"
+
+1592034374 source:a:\cabell\rssi.cpp
+	"RSSI.h"
+
+1590825710 a:\cabell\rssi.h
+	"RX.h"
+
+1592034374 source:a:\cabell\rx_tx_util.cpp
+	"Rx_Tx_Util.h"
+	"RX.h"
+
+1589902064 a:\cabell\rx_tx_util.h
+	"RX.h"
+
+1590916718 source:a:\cabell\sbus.cpp
+	"RX.h"
+	"SBUS.h"
+	<util/setbaud.h>
+
+1590875600 a:\cabell\sbus.h
+
+1592034374 source:a:\cabell\spi.cpp
+	"spi.h"
+
+1590825710 source:a:\cabell\sum_ppm.cpp
+	"RX.h"
+	"SUM_PPM.h"
+
+1590825710 a:\cabell\sum_ppm.h
+	"Pins.h"
+
+1592034374 source:a:\cabell\testharness.cpp
+	"TestHarness.h"
+	"Pins.h"
+	"Arduino.h"
+	<LiquidCrystal_I2C.h>
+	<LiquidCrystal.h>
+
+1590825710 a:\cabell\testharness.h
+	"Arduino.h"
+
+1592034374 source:a:\cabell\time.cpp
+	"Time.h"
+

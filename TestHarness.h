@@ -1,15 +1,24 @@
+/*         Copyright 2020 by Ingwie (Bracame)          */
+/*    This is a fork modded of RC_RX_CABELL_V3_FHSS    */
+/* https://github.com/soligen2010/RC_RX_CABELL_V3_FHSS */
+/*   Licence: GPLV3 see <http://www.gnu.org/licenses   */
+/*        Compile with AVR GCC + Code::Blocks          */
+/*    https://www.mediafire.com/file/cahqfrm90h7c7fy/  */
+/*    Setup_OAVRCBuilder3.exe/file (Pswd : OpenAVRc)   */
+/*       Old header if it is not a new file ->         */
+
 /*
  Copyright 2017 by Dennis Cabell
  KE8FZX
- 
+
  To use this software, you must adhere to the license terms described below, and assume all responsibility for the use
  of the software.  The user is responsible for all consequences or damage that may result from using this software.
- The user is responsible for ensuring that the hardware used to run this software complies with local regulations and that 
- any radio signal generated from use of this software is legal for that user to generate.  The author(s) of this software 
- assume no liability whatsoever.  The author(s) of this software is not responsible for legal or civil consequences of 
- using this software, including, but not limited to, any damages cause by lost control of a vehicle using this software.  
+ The user is responsible for ensuring that the hardware used to run this software complies with local regulations and that
+ any radio signal generated from use of this software is legal for that user to generate.  The author(s) of this software
+ assume no liability whatsoever.  The author(s) of this software is not responsible for legal or civil consequences of
+ using this software, including, but not limited to, any damages cause by lost control of a vehicle using this software.
  If this software is copied or modified, this disclaimer must accompany all copies.
- 
+
  This project is free software: you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
  the Free Software Foundation, either version 3 of the License, or
@@ -23,7 +32,7 @@
  You should have received a copy of the GNU General Public License
  along with RC_RX_CABELL_V3_FHSS.  If not, see <http://www.gnu.org/licenses/>.
  */
- 
+
 #ifndef __have__TEST_HARNESS_h__
 #define __have__TEST_HARNESS_h__
 
@@ -47,17 +56,17 @@
 // some version are documented at https://arduino-info.wikispaces.com/LCD-Blue-I2C
 // I2C requires the NewLiquidCrystal library to be installed.  Get it at https://bitbucket.org/fmalpartida/new-liquidcrystal/downloads/
 #ifdef USE_I2C_LCD
-  #define LCD_I2C_ADDR     0x3F
-  //#define LCD_I2C_ADDR     0x27
-  #define I2C_EN_PIN              2
-  #define I2C_RW_PIN              1
-  #define I2C_RS_PIN              0
-  #define I2C_D4_PIN              4
-  #define I2C_D5_PIN              5
-  #define I2C_D6_PIN              6
-  #define I2C_D7_PIN              7
-  #define I2C_BL_PIN              3   //Back light
-  #define I2C_BACKLIGHT_POLARITY  POSITIVE
+ #define LCD_I2C_ADDR     0x3F
+ //#define LCD_I2C_ADDR     0x27
+ #define I2C_EN_PIN              2
+ #define I2C_RW_PIN              1
+ #define I2C_RS_PIN              0
+ #define I2C_D4_PIN              4
+ #define I2C_D5_PIN              5
+ #define I2C_D6_PIN              6
+ #define I2C_D7_PIN              7
+ #define I2C_BL_PIN              3   //Back light
+ #define I2C_BACKLIGHT_POLARITY  POSITIVE
 #endif
 
 //----------------------------------------------------------------------------------
@@ -68,44 +77,45 @@
 
 #define PACKET_DISPLAY_INTERVAL  1000    // The number of expected packets between display updates. 1000 is 3 seconds non telemetry, 3.5 with telemetry
 
-class TestHarness {
+class TestHarness
+{
 
-  public:
-      TestHarness ( );
-                                     
-      void init();
-      void hit();
-      void miss();
-      void failSafe();
-      void reSync();
-      void secondaryHit();      
-      void badPacket();      
+public:
+ TestHarness ( );
 
-     
-  private:
-      void display(int LCD_Command);
-      void packetProcess();
-      void resetCounters();
-                 
-      int hitCount = 0;
-      int missCount = 0;
-      int sequentialMissCount = 0;
-      int holdSequentialMissCount = 0;
-      int secondaryHitCount = 0;
-      int badPacketCount = 0;
-      int packetCount = 0;
+ void init();
+ void hit();
+ void miss();
+ void failSafe();
+ void reSync();
+ void secondaryHit();
+ void badPacket();
 
-      bool firstPacketHit = false;
-      bool firstDisplay = false;
 
-      int displayHitCount = 0;
-      int displayMissCount = 0;
-      int displaySequentialMissCount = 0;
-      int displayHoldSequentialMissCount = 0;
-      int displaySecondaryHitCount = 0;
-      int displayBadPacketCount = 0;
-      int displayPacketCount = 0;
-      float displayPacketRate = 0.0;
+private:
+ void display(int LCD_Command);
+ void packetProcess();
+ void resetCounters();
+
+ int hitCount = 0;
+ int missCount = 0;
+ int sequentialMissCount = 0;
+ int holdSequentialMissCount = 0;
+ int secondaryHitCount = 0;
+ int badPacketCount = 0;
+ int packetCount = 0;
+
+ bool firstPacketHit = false;
+ bool firstDisplay = false;
+
+ int displayHitCount = 0;
+ int displayMissCount = 0;
+ int displaySequentialMissCount = 0;
+ int displayHoldSequentialMissCount = 0;
+ int displaySecondaryHitCount = 0;
+ int displayBadPacketCount = 0;
+ int displayPacketCount = 0;
+ float displayPacketRate = 0.0;
 
 };
 

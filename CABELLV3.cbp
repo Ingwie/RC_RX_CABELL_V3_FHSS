@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="CABELLV3" />
+		<Option pch_mode="2" />
+		<Option compiler="avr-gcc" />
+		<Build>
+			<Target title="Release">
+				<Option output="bin/CABELLV3.elf" prefix_auto="1" extension_auto="0" />
+				<Option working_dir="" />
+				<Option object_output="obj/" />
+				<Option type="5" />
+				<Option compiler="avr-gcc" />
+				<Compiler>
+					<Add option="-Os" />
+					<Add option="-std=gnu++11" />
+					<Add option="-mrelax" />
+					<Add option="-mstrict-X" />
+				</Compiler>
+			</Target>
+			<Environment>
+				<Variable name="MCU" value="atmega328p" />
+			</Environment>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add option="-mmcu=atmega328p" />
+			<Add option="-DF_CPU=16000000UL" />
+		</Compiler>
+		<Linker>
+			<Add option="-mmcu=atmega328p" />
+			<Add option="-Wl,-Map=$(TARGET_OUTPUT_DIR)$(TARGET_OUTPUT_BASENAME).map,--cref" />
+		</Linker>
+		<ExtraCommands>
+			<Add after='cmd /c &quot;avr-objdump -h -S $(TARGET_OUTPUT_FILE) &gt; $(TARGET_OUTPUT_DIR)$(TARGET_OUTPUT_BASENAME).lss&quot;' />
+			<Add after="avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex $(TARGET_OUTPUT_FILE) $(TARGET_OUTPUT_DIR)$(TARGET_OUTPUT_BASENAME).hex" />
+			<Add after="avr-objcopy --no-change-warnings -j .eeprom --change-section-lma .eeprom=0 -O ihex $(TARGET_OUTPUT_FILE) $(TARGET_OUTPUT_DIR)$(TARGET_OUTPUT_BASENAME).eep" />
+			<Add after="avr-objcopy --no-change-warnings -j .lock --change-section-lma .lock=0 -O ihex $(TARGET_OUTPUT_FILE) $(TARGET_OUTPUT_DIR)$(TARGET_OUTPUT_BASENAME).lock" />
+			<Add after="avr-objcopy --no-change-warnings -j .signature --change-section-lma .signature=0 -O ihex $(TARGET_OUTPUT_FILE) $(TARGET_OUTPUT_DIR)$(TARGET_OUTPUT_BASENAME).sig" />
+			<Add after="avr-objcopy --no-change-warnings -j .fuse --change-section-lma .fuse=0 -O ihex $(TARGET_OUTPUT_FILE) $(TARGET_OUTPUT_DIR)$(TARGET_OUTPUT_BASENAME).fuse" />
+			<Add after="avr-objdump -Pmem-usage $(TARGET_OUTPUT_FILE) $(TARGET_OUTPUT_DIR)$(TARGET_OUTPUT_BASENAME).elf" />
+		</ExtraCommands>
+		<Unit filename="PPM.cpp" />
+		<Unit filename="PPM.h" />
+		<Unit filename="Pins.h" />
+		<Unit filename="RC_RX_CABELL_V3_FHSS.cpp" />
+		<Unit filename="RSSI.cpp" />
+		<Unit filename="RSSI.h" />
+		<Unit filename="RX.cpp" />
+		<Unit filename="RX.h" />
+		<Unit filename="Rx_Tx_Util.cpp" />
+		<Unit filename="Rx_Tx_Util.h" />
+		<Unit filename="SBUS.cpp" />
+		<Unit filename="SBUS.h" />
+		<Unit filename="SUM_PPM.cpp" />
+		<Unit filename="SUM_PPM.h" />
+		<Unit filename="TestHarness.cpp" />
+		<Unit filename="TestHarness.h" />
+		<Unit filename="Time.cpp" />
+		<Unit filename="Time.h" />
+		<Unit filename="iface_nrf24l01.h" />
+		<Unit filename="nrf24l01.cpp" />
+		<Unit filename="pin_helper.h" />
+		<Unit filename="spi.cpp" />
+		<Unit filename="spi.h" />
+		<Extensions>
+			<lib_finder disable_auto="0" />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
