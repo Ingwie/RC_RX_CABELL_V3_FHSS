@@ -43,7 +43,7 @@
 #include "RSSI.h"
 #include "SBUS.h"
 
-uint16_t channelValues [CABELL_NUM_CHANNELS];
+uint16_t channelValues[CABELL_NUM_CHANNELS];
 uint8_t  currentModel = 0;
 uint64_t radioPipeID;
 uint64_t radioNormalRxPipeID;
@@ -251,7 +251,7 @@ void setNextRadioChannel(bool missedPacket)
 
 // todo use missedPacket ?;
 
- currentChannel = getNextChannel (radioChannel, CABELL_RADIO_CHANNELS, currentChannel);
+ currentChannel = getNextChannel(radioChannel, CABELL_RADIO_CHANNELS, currentChannel);
 
  if (expectedTransmitCompleteTime != 0)
   {
@@ -446,7 +446,7 @@ void outputPPM()
 {
  for(uint8_t x = 0; x < CABELL_NUM_PPM_CHANNELS; x++)
   {
-   channelValues[x] = limit<uint16_t>(channelValues[x],CHANNEL_MIN_VALUE,CHANNEL_MAX_VALUE);
+   channelValues[x] = limit<uint16_t>(CHANNEL_MIN_VALUE,channelValues[x],CHANNEL_MAX_VALUE);
    uint8_t oldSREG = SREG;
    cli();
    PPMValues[x] = channelValues[x];
@@ -710,7 +710,7 @@ bool readAndProcessPacket()      //only call when a packet is available on the r
 
  bool packet_rx = false;
  uint16_t tempHoldValues [CABELL_NUM_CHANNELS];
- uint8_t channelReduction = limit((RxPacket.option & CABELL_OPTION_MASK_CHANNEL_REDUCTION),0,CABELL_NUM_CHANNELS-CABELL_MIN_CHANNELS);  // Must be at least 4 channels, so cap at 12
+ uint8_t channelReduction = limit(0,(RxPacket.option & CABELL_OPTION_MASK_CHANNEL_REDUCTION),CABELL_NUM_CHANNELS-CABELL_MIN_CHANNELS);  // Must be at least 4 channels, so cap at 12
  uint8_t packetSize = sizeof(RxPacket) - ((((channelReduction - (channelReduction%2))/ 2)) * 3);      // reduce 3 bytes per 2 channels, but not last channel if it is odd
  uint8_t maxPayloadValueIndex = sizeof(RxPacket.payloadValue) - (sizeof(RxPacket) - packetSize);
  channelsRecieved = CABELL_NUM_CHANNELS - channelReduction;
@@ -718,7 +718,7 @@ bool readAndProcessPacket()      //only call when a packet is available on the r
  if (telemetryEnabled)    // putting this after setNextRadioChannel will lag by one telemetry packet, but by doing this the telemetry can be sent sooner, improving the timing
   {
    setTelemetryPowerMode(RxPacket.option);
-   packetInterval = DEFAULT_PACKET_INTERVAL + (limit<int16_t>((channelsRecieved - 6),0,10 ) * (int16_t)100);   // increase packet period by 100 us for each channel over 6
+   packetInterval = DEFAULT_PACKET_INTERVAL + (limit<int16_t>(0,(channelsRecieved - 6),10 ) * (int16_t)100);   // increase packet period by 100 us for each channel over 6
   }
  else
   {

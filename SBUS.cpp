@@ -115,10 +115,10 @@ void sbusDisable()
 void setSbusOutputChannelValue(uint8_t channel, uint16_t value)
 {
 
- uint8_t firstBit = 8 + (limit<uint8_t>(channel,0,15) * 11);  // Start byte plus 11 bits per channel. 16 channels
+ uint8_t firstBit = 8 + (limit<uint8_t>(0,channel,15) * 11);  // Start byte plus 11 bits per channel. 16 channels
  uint8_t byteIndex = firstBit / 8;
  uint8_t bitIndex = (firstBit % 8);
- int16_t adjustedValue = limit<uint16_t>(value,CHANNEL_MIN_VALUE,CHANNEL_MAX_VALUE);
+ int16_t adjustedValue = limit<uint16_t>(CHANNEL_MIN_VALUE,value,CHANNEL_MAX_VALUE);
  adjustedValue = map(adjustedValue - CHANNEL_MID_VALUE,(CHANNEL_MIN_VALUE - CHANNEL_MID_VALUE),(CHANNEL_MAX_VALUE - CHANNEL_MID_VALUE),-SBUS_OFFSET_FROM_MID_POINT,SBUS_OFFSET_FROM_MID_POINT);
  adjustedValue += SBUS_MID_POINT;
 

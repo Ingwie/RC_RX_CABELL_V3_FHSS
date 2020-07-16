@@ -46,8 +46,8 @@ uint8_t getNextChannel (uint8_t seqArray[], uint8_t seqArraySize, uint8_t prevCh
   * Each time the channel is changes, bands change in a way so that the next channel will be in a
   * different non-adjacent band. Both the band changes and the index in seqArray is incremented.
   */
- prevChannel -= CABELL_RADIO_MIN_CHANNEL_NUM;                             // Subtract CABELL_RADIO_MIN_CHANNEL_NUM because it was added to the return value
- prevChannel = limit<uint8_t>(prevChannel,0,(seqArraySize * 5));    // Constrain the values just in case something bogus was sent in.
+ prevChannel -= CABELL_RADIO_MIN_CHANNEL_NUM;                    // Subtract CABELL_RADIO_MIN_CHANNEL_NUM because it was added to the return value
+ prevChannel = limit<uint8_t>(0, prevChannel,(seqArraySize * 5)); // Constrain the values just in case something bogus was sent in.
 
  uint8_t currBand = prevChannel / seqArraySize;
  uint8_t nextBand = (currBand + 3) % 5;
@@ -88,7 +88,7 @@ void getChannelSequence (uint8_t outArray[], uint8_t numChannels, uint64_t permu
  uint64_t numChannelsFactorial=1;
  uint8_t  sequenceValue;
 
- numChannels = limit<uint8_t>(numChannels,1,20);
+ numChannels = limit<uint8_t>(1,numChannels,20);
 
  for (i = 1; i <= numChannels; i++)
   {

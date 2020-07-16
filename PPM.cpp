@@ -68,7 +68,7 @@ void PpmSetup()
  ppmChannelNum = 0;       // reset Num channel
  TCCR1A = 0;              // normal counting mode
  TCCR1B = _BV(CS11);      // 8 pre-scaler: 0,5 microseconds at 16mhz
- OCR1A = 0xFFFF;          // set big value
+ OCR1A = 0x000F;          // set short value
  TCNT1 = 0;               // clear the timer count
  TIFR1 |= _BV(OCF1A);     // clear any pending interrupts;
  TIMSK1 |=  _BV(OCIE1A) ; // enable the output compare interrupt

@@ -91,7 +91,7 @@ void ppmSumDisable()
 void setPPMSumOutputChannelValue(uint8_t channel, uint16_t value)
 {
  uint16_t correction = MICROSECOND_RANGE_OFFSET + (uint16_t)((float)value * MICROSECOND_RANGE_EXPANSION) ;
- value = (limit<uint16_t>(value,CHANNEL_MIN_VALUE,CHANNEL_MAX_VALUE) + correction) * TICKS_PER_US;
+ value = (limit<uint16_t>(CHANNEL_MIN_VALUE,value,CHANNEL_MAX_VALUE) + correction) * TICKS_PER_US;
  if (ppmValueArray[channel] != (int16_t)value)
   {
    uint8_t oldSREG = SREG;

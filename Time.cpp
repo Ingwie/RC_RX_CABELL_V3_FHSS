@@ -41,6 +41,6 @@ uint32_t approxMillis()
 uint32_t micros()
 {
  uint32_t ret = (uint32_t)(approxMillis() << 10); //X256X4
- ret |= (uint8_t)(TCNT2<<2); //X4
+ ret |= (uint16_t)(TCNT2<<2); //X4
  return ret;
 }
